@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Luxe Store</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Page specific styles to keep main CSS clean */
+        .about-section {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+            margin-bottom: 4rem;
+        }
+        .about-text { flex: 1; }
+        .about-img { flex: 1; border-radius: 8px; box-shadow: var(--shadow); }
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            text-align: center;
+            margin-top: 2rem;
+        }
+        .value-card {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+        }
+        @media (max-width: 768px) {
+            .about-section { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">LUXE STORE</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="shop.html">Shop</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="cart-icon">
+            <a href="cart.html">🛒 <span id="cart-count">0</span></a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1>Our Story</h1>
+        <br>
+        
+        <div class="about-section">
+            <div class="about-text">
+                <h2>Born in Mumbai, Styled for the World.</h2>
+                <br>
+                <p>Founded in 2025, Luxe Store began with a simple mission: to make premium fashion accessible without the premium price tag. Operating from the heart of India's fashion capital, Mumbai, we curate collections that blend traditional elegance with modern trends.</p>
+                <br>
+                <p>What started as a small curated list of accessories has grown into a full-fledged fashion destination. We believe that style is a way to say who you are without having to speak.</p>
+            </div>
+            <img src="https://placehold.co/600x400?text=Our+Office+in+Mumbai" alt="About Us" class="about-img">
+        </div>
+
+        <hr style="border: 0; border-top: 1px solid #ddd; margin: 2rem 0;">
+
+        <h2 style="text-align: center;">Why Choose Us?</h2>
+        <div class="values-grid">
+            <div class="value-card">
+                <h3>✨ Premium Quality</h3>
+                <p>We handpick every item to ensure it meets our strict quality standards.</p>
+            </div>
+            <div class="value-card">
+                <h3>🚚 Fast Shipping</h3>
+                <p>Dispatched directly from Mumbai to reach you in record time.</p>
+            </div>
+            <div class="value-card">
+                <h3>🤝 Customer First</h3>
+                <p>We don't just sell products; we build relationships.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Luxe Store. All rights reserved.</p>
+    </footer>
+
+    <script src="js/products.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
