@@ -1,28 +1,41 @@
 // --- Razorpay Configuration ---
-const RAZORPAY_KEY_ID = "rzp_live_LIqOpioBHDIhG4"; // YOUR LIVE KEY
+const RAZORPAY_KEY_ID = "rzp_live_LIqOpioBHDIhG4"; // Your Live Key
 
 // --- State Management ---
 let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
 // --- Initialization ---
 document.addEventListener('DOMContentLoaded', () => {
+    console.log("Website Loaded"); // Debugging check
     updateCartCount();
     
-    // Page Routing Logic
-    const path = window.location.pathname;
-    if (path.includes('shop.html')) renderShop();
-    if (path.includes('product.html')) renderSingleProduct();
-    if (path.includes('cart.html')) renderCart();
-    if (path.includes('index.html') || path === '/') renderFeatured();
+    // Improved Routing: Check which element exists on the page
+    if (document.getElementById('product-grid')) {
+        renderShop();
+    } 
+    else if (document.getElementById('product-detail')) {
+        renderSingleProduct();
+    } 
+    else if (document.getElementById('cart-items')) {
+        renderCart();
+    }
+    // Note: Homepage doesn't need specific JS rendering for this setup
 });
 
 // --- Shop Functionality ---
 function renderShop() {
+    console.log("Rendering Shop...");
     const grid = document.getElementById('product-grid');
     const searchInput = document.getElementById('search-input');
     const catSelect = document.getElementById('category-select');
 
+    // Function to draw the cards
     function displayProducts(items) {
+        if (items.length === 0) {
+            grid.innerHTML = '<p>No products found.</p>';
+            return;
+        }
+        
         grid.innerHTML = items.map(product => `
             <div class="product-card">
                 <a href="product.html?id=${product.id}">
@@ -30,6 +43,7 @@ function renderShop() {
                 </a>
                 <div class="product-info">
                     <h3>${product.name}</h3>
+                    <p class="category" style="font-size:0.8rem; color:#777;">${product.category}</p>
                     <p class="price">₹${product.price}</p>
                     <button class="btn" onclick="addToCart(${product.id})">Add to Cart</button>
                 </div>
@@ -37,18 +51,22 @@ function renderShop() {
         `).join('');
     }
 
+    // Initial Render
     displayProducts(products);
 
-    // Filter Logic
+    // Search Filter
     searchInput.addEventListener('input', (e) => {
         const term = e.target.value.toLowerCase();
         const filtered = products.filter(p => p.name.toLowerCase().includes(term));
         displayProducts(filtered);
     });
 
+    // Category Filter
     catSelect.addEventListener('change', (e) => {
         const cat = e.target.value;
-        const filtered = cat === 'all' ? products : products.filter(p => p.category === cat);
+        const filtered = cat === 'all' 
+            ? products 
+            : products.filter(p => p.category === cat);
         displayProducts(filtered);
     });
 }
@@ -65,12 +83,14 @@ function renderSingleProduct() {
             <div class="detail-text">
                 <h1>${product.name}</h1>
                 <p class="category">Category: ${product.category}</p>
-                <p class="price">₹${product.price}</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. High quality material.</p>
+                <p class="price" style="font-size: 2rem; color: #e67e22;">₹${product.price}</p>
+                <p>Experience premium quality with our ${product.name}. Perfect for any occasion and crafted with care.</p>
                 <br>
                 <button class="btn" onclick="addToCart(${product.id})">Add to Cart</button>
             </div>
         `;
+    } else {
+        document.getElementById('product-detail').innerHTML = '<p>Product not found.</p>';
     }
 }
 
@@ -101,19 +121,26 @@ function renderCart() {
     const totalEl = document.getElementById('cart-total');
     
     if (cart.length === 0) {
-        container.innerHTML = '<tr><td colspan="4">Your cart is empty.</td></tr>';
+        container.innerHTML = '<tr><td colspan="4" style="text-align:center;">Your cart is empty. <a href="shop.html">Shop Now</a></td></tr>';
         totalEl.innerText = '0';
         return;
     }
 
     container.innerHTML = cart.map((item, index) => `
         <tr>
-            <td>${item.name}</td>
+            <td>
+                <div style="display:flex; align-items:center; gap:10px;">
+                    <img src="${item.image}" style="width:50px; height:50px; object-fit:cover; border-radius:4px;">
+                    ${item.name}
+                </div>
+            </td>
             <td>₹${item.price}</td>
             <td>
-                <button onclick="changeQty(${index}, -1)">-</button>
-                ${item.quantity}
-                <button onclick="changeQty(${index}, 1)">+</button>
+                <div style="display:flex; gap:10px; align-items:center;">
+                    <button style="padding:2px 8px;" onclick="changeQty(${index}, -1)">-</button>
+                    ${item.quantity}
+                    <button style="padding:2px 8px;" onclick="changeQty(${index}, 1)">+</button>
+                </div>
             </td>
             <td>₹${item.price * item.quantity}</td>
         </tr>
@@ -139,18 +166,18 @@ function checkout() {
 
     const options = {
         "key": RAZORPAY_KEY_ID, 
-        "amount": total * 100, // Amount in paise (multiply by 100)
+        "amount": total * 100, // Amount in paise
         "currency": "INR",
-        "name": "My Store",
-        "description": "Purchase Description",
+        "name": "Luxe Store",
+        "description": "Payment for order",
         "handler": function (response){
-            alert("Payment Successful! Payment ID: " + response.razorpay_payment_id);
+            alert("Payment Successful! Ref: " + response.razorpay_payment_id);
             cart = [];
             localStorage.setItem('cart', JSON.stringify(cart));
             window.location.href = 'index.html';
         },
         "prefill": {
-            "name": "Customer Name",
+            "name": "Valued Customer",
             "email": "customer@example.com",
             "contact": "9999999999"
         },

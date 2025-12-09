@@ -1,17 +1,55 @@
-<div class="filter-bar">
-    <input type="text" id="search-input" placeholder="Search products...">
-    <select id="category-select">
-        <option value="all">All Categories</option>
-        <option value="Accessories">Accessories</option>
-        <option value="Imitation Jewellery">Imitation Jewellery</option>
-        <option value="Makeup">Makeup</option>
-        <option value="Skincare">Skincare</option>
-        <option value="Haircare">Haircare</option>
-        <option value="Private Label">Private Label</option>
-        <option value="Women Fashion">Women Fashion</option>
-        <option value="Ethnic Wear">Ethnic Wear</option>
-        <option value="Men Fashion">Men Fashion</option>
-        <option value="Beauty Tools">Beauty Tools</option>
-        <option value="Seasonal">Seasonal</option>
-    </select>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop - Luxe Store</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav>
+        <div class="logo">LUXE STORE</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="shop.html">Shop</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="cart-icon">
+            <a href="cart.html">🛒 <span id="cart-count">0</span></a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="filter-bar">
+            <input type="text" id="search-input" placeholder="Search products...">
+            
+            <select id="category-select">
+                <option value="all">All Categories</option>
+                <option value="Accessories">Accessories</option>
+                <option value="Imitation Jewellery">Imitation Jewellery</option>
+                <option value="Makeup">Makeup</option>
+                <option value="Skincare">Skincare</option>
+                <option value="Haircare">Haircare</option>
+                <option value="Private Label">Private Label</option>
+                <option value="Women Fashion">Women Fashion</option>
+                <option value="Ethnic Wear">Ethnic Wear</option>
+                <option value="Men Fashion">Men Fashion</option>
+                <option value="Beauty Tools">Beauty Tools</option>
+                <option value="Seasonal">Seasonal</option>
+            </select>
+        </div>
+
+        <div id="product-grid" class="product-grid">
+            </div>
+    </div>
+
+    <footer>
+        <p>© 2025 Luxe Store. All rights reserved.</p>
+    </footer>
+
+    <script src="js/products.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
