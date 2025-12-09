@@ -3,41 +3,122 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shop - Luxe Store</title>
+    <title>Shop Collection | GAMACOSMETICOS</title>
     <link rel="stylesheet" href="css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* --- Shop Specific Luxury Styles --- */
+        .shop-header {
+            text-align: center;
+            padding: 2rem 0 4rem;
+        }
+        .shop-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            font-style: italic;
+        }
+        .shop-header p {
+            color: #777;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.8rem;
+        }
+
+        /* Minimalist Filter Bar */
+        .filter-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 3rem;
+            border-top: 1px solid #f0f0f0;
+            border-bottom: 1px solid #f0f0f0;
+            padding: 1rem 0;
+        }
+        
+        .search-wrapper {
+            flex: 1;
+            display: flex;
+            align-items: center;
+        }
+        .search-input {
+            width: 100%;
+            max-width: 300px;
+            padding: 0.5rem;
+            border: none;
+            border-bottom: 1px solid #ddd;
+            font-family: 'Lato', sans-serif;
+            font-size: 0.9rem;
+            outline: none;
+            transition: 0.3s;
+        }
+        .search-input:focus {
+            border-bottom-color: #000;
+        }
+
+        .category-select {
+            padding: 0.5rem 1rem;
+            border: 1px solid #ddd;
+            background: transparent;
+            font-family: 'Lato', sans-serif;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            cursor: pointer;
+            outline: none;
+        }
+
+        @media (max-width: 768px) {
+            .filter-container {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+            .search-input { text-align: center; }
+        }
+    </style>
 </head>
 <body>
+
     <nav>
-        <div class="logo">LUXE STORE</div>
-        <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="shop.html">Shop</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
-        <div class="cart-icon">
-            <a href="cart.html">🛒 <span id="cart-count">0</span></a>
+        <div class="nav-links">
+            <a href="shop.html">Shop All</a>
+            <a href="shop.html">New Arrivals</a>
+        </div>
+        
+        <div class="logo"><a href="index.html">GAMACOSMETICOS</a></div>
+        
+        <div class="nav-links">
+            <a href="about.html">Our World</a>
+            <a href="cart.html">Bag (<span id="cart-count">0</span>)</a>
+        </div>
+        <div class="cart-icon" style="display:none;">
+            <a href="cart.html">👜 <span id="cart-count-mobile">0</span></a>
         </div>
     </nav>
 
     <div class="container">
-        <div class="filter-bar">
-            <input type="text" id="search-input" placeholder="Search products...">
+        <div class="shop-header">
+            <p>The Collection</p>
+            <h1>All Products</h1>
+        </div>
+
+        <div class="filter-container">
+            <div class="search-wrapper">
+                <input type="text" id="search-input" class="search-input" placeholder="Search for items...">
+            </div>
             
-            <select id="category-select">
-                <option value="all">All Categories</option>
+            <select id="category-select" class="category-select">
+                <option value="all">View All Categories</option>
                 <option value="Accessories">Accessories</option>
-                <option value="Imitation Jewellery">Imitation Jewellery</option>
+                <option value="Imitation Jewellery">Jewellery</option>
                 <option value="Makeup">Makeup</option>
                 <option value="Skincare">Skincare</option>
                 <option value="Haircare">Haircare</option>
                 <option value="Private Label">Private Label</option>
-                <option value="Women Fashion">Women Fashion</option>
+                <option value="Women Fashion">Women's Fashion</option>
                 <option value="Ethnic Wear">Ethnic Wear</option>
-                <option value="Men Fashion">Men Fashion</option>
+                <option value="Men Fashion">Men's Fashion</option>
                 <option value="Beauty Tools">Beauty Tools</option>
-                <option value="Seasonal">Seasonal</option>
+                <option value="Seasonal">Seasonal Gifts</option>
             </select>
         </div>
 
@@ -46,7 +127,7 @@
     </div>
 
     <footer>
-        <p>© 2025 Luxe Store. All rights reserved.</p>
+        <p>&copy; 2025 GAMACOSMETICOS. MUMBAI &bullet; PARIS &bullet; NEW YORK</p>
     </footer>
 
     <script src="js/products.js"></script>

@@ -1,15 +1,23 @@
 // --- Razorpay Configuration ---
-const RAZORPAY_KEY_ID = "rzp_live_LIqOpioBHDIhG4"; // Your Live Key
+const RAZORPAY_KEY_ID = "rzp_live_LIqOpioBHDIhG4"; 
 
 // --- State Management ---
 let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
 // --- Initialization ---
 document.addEventListener('DOMContentLoaded', () => {
-    console.log("Website Loaded"); // Debugging check
+    console.log("App Initialized");
     updateCartCount();
     
-    // Improved Routing: Check which element exists on the page
+    // Inject Toast Container if not exists
+    if (!document.getElementById('toast-box')) {
+        const toastDiv = document.createElement('div');
+        toastDiv.id = 'toast-box';
+        toastDiv.className = 'toast';
+        document.body.appendChild(toastDiv);
+    }
+
+    // Determine which page we are on based on elements present
     if (document.getElementById('product-grid')) {
         renderShop();
     } 
@@ -19,20 +27,19 @@ document.addEventListener('DOMContentLoaded', () => {
     else if (document.getElementById('cart-items')) {
         renderCart();
     }
-    // Note: Homepage doesn't need specific JS rendering for this setup
 });
 
-// --- Shop Functionality ---
+// --- Shop Page Logic ---
 function renderShop() {
-    console.log("Rendering Shop...");
     const grid = document.getElementById('product-grid');
     const searchInput = document.getElementById('search-input');
     const catSelect = document.getElementById('category-select');
 
-    // Function to draw the cards
     function displayProducts(items) {
+        if (!grid) return; // Safety check
+        
         if (items.length === 0) {
-            grid.innerHTML = '<p>No products found.</p>';
+            grid.innerHTML = '<p style="text-align:center; width:100%;">No products found.</p>';
             return;
         }
         
@@ -44,70 +51,92 @@ function renderShop() {
                 <div class="product-info">
                     <h3>${product.name}</h3>
                     <p class="category" style="font-size:0.8rem; color:#777;">${product.category}</p>
-                    <p class="price">₹${product.price}</p>
-                    <button class="btn" onclick="addToCart(${product.id})">Add to Cart</button>
+                    <div style="margin-top:auto">
+                        <p class="price" style="margin-bottom:10px;">₹${product.price}</p>
+                        
+                        <div class="card-actions">
+                            <div class="qty-selector">
+                                <button class="qty-btn" onclick="updateCardQty(${product.id}, -1)">-</button>
+                                <input id="qty-${product.id}" class="qty-input" value="1" readonly>
+                                <button class="qty-btn" onclick="updateCardQty(${product.id}, 1)">+</button>
+                            </div>
+                            <button class="add-btn" onclick="addToCart(${product.id})">Add</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         `).join('');
     }
 
-    // Initial Render
-    displayProducts(products);
-
-    // Search Filter
-    searchInput.addEventListener('input', (e) => {
-        const term = e.target.value.toLowerCase();
-        const filtered = products.filter(p => p.name.toLowerCase().includes(term));
-        displayProducts(filtered);
-    });
-
-    // Category Filter
-    catSelect.addEventListener('change', (e) => {
-        const cat = e.target.value;
-        const filtered = cat === 'all' 
-            ? products 
-            : products.filter(p => p.category === cat);
-        displayProducts(filtered);
-    });
-}
-
-// --- Single Product Functionality ---
-function renderSingleProduct() {
-    const params = new URLSearchParams(window.location.search);
-    const id = parseInt(params.get('id'));
-    const product = products.find(p => p.id === id);
-
-    if (product) {
-        document.getElementById('product-detail').innerHTML = `
-            <img src="${product.image}" alt="${product.name}">
-            <div class="detail-text">
-                <h1>${product.name}</h1>
-                <p class="category">Category: ${product.category}</p>
-                <p class="price" style="font-size: 2rem; color: #e67e22;">₹${product.price}</p>
-                <p>Experience premium quality with our ${product.name}. Perfect for any occasion and crafted with care.</p>
-                <br>
-                <button class="btn" onclick="addToCart(${product.id})">Add to Cart</button>
-            </div>
-        `;
+    // Initial Load
+    if(typeof products !== 'undefined') {
+        displayProducts(products);
     } else {
-        document.getElementById('product-detail').innerHTML = '<p>Product not found.</p>';
+        grid.innerHTML = '<p>Error: Product data not loaded.</p>';
+    }
+
+    // Search Listener
+    if(searchInput) {
+        searchInput.addEventListener('input', (e) => {
+            const term = e.target.value.toLowerCase();
+            const filtered = products.filter(p => p.name.toLowerCase().includes(term));
+            displayProducts(filtered);
+        });
+    }
+
+    // Category Listener
+    if(catSelect) {
+        catSelect.addEventListener('change', (e) => {
+            const cat = e.target.value;
+            const filtered = cat === 'all' ? products : products.filter(p => p.category === cat);
+            displayProducts(filtered);
+        });
     }
 }
 
-// --- Cart Functionality ---
+// --- Card Quantity Logic ---
+function updateCardQty(id, change) {
+    const input = document.getElementById(`qty-${id}`);
+    if(!input) return;
+    let val = parseInt(input.value);
+    val += change;
+    if (val < 1) val = 1;
+    if (val > 20) val = 20;
+    input.value = val;
+}
+
+// --- Cart Logic ---
 function addToCart(id) {
     const product = products.find(p => p.id === id);
+    
+    // Check if adding from Shop Page (with qty selector) or Single Page
+    let quantity = 1;
+    const qtyInput = document.getElementById(`qty-${id}`);
+    if (qtyInput) {
+        quantity = parseInt(qtyInput.value);
+    }
+
     const existing = cart.find(item => item.id === id);
 
     if (existing) {
-        existing.quantity++;
+        existing.quantity += quantity;
     } else {
-        cart.push({ ...product, quantity: 1 });
+        cart.push({ ...product, quantity: quantity });
     }
 
     localStorage.setItem('cart', JSON.stringify(cart));
     updateCartCount();
-    alert(`${product.name} added to cart!`);
+    showToast(`Added ${quantity}x ${product.name} to Cart`);
+}
+
+function showToast(message) {
+    const toast = document.getElementById('toast-box');
+    if(!toast) return;
+    toast.innerText = "✅ " + message;
+    toast.classList.add('show');
+    setTimeout(() => {
+        toast.classList.remove('show');
+    }, 3000);
 }
 
 function updateCartCount() {
@@ -122,7 +151,7 @@ function renderCart() {
     
     if (cart.length === 0) {
         container.innerHTML = '<tr><td colspan="4" style="text-align:center;">Your cart is empty. <a href="shop.html">Shop Now</a></td></tr>';
-        totalEl.innerText = '0';
+        if(totalEl) totalEl.innerText = '0';
         return;
     }
 
@@ -147,7 +176,7 @@ function renderCart() {
     `).join('');
 
     const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-    totalEl.innerText = total;
+    if(totalEl) totalEl.innerText = total;
 }
 
 function changeQty(index, change) {
@@ -158,34 +187,51 @@ function changeQty(index, change) {
     updateCartCount();
 }
 
+function renderSingleProduct() {
+    const params = new URLSearchParams(window.location.search);
+    const id = parseInt(params.get('id'));
+    const product = products.find(p => p.id === id);
+    if(product) {
+        const detailContainer = document.getElementById('product-detail');
+        detailContainer.innerHTML = `
+            <img src="${product.image}" alt="${product.name}">
+            <div class="detail-text">
+                <h1>${product.name}</h1>
+                <p>Category: ${product.category}</p>
+                <h2 style="color:#e67e22">₹${product.price}</h2>
+                <br>
+                <div class="card-actions" style="justify-content:flex-start; margin-bottom:20px;">
+                     <div class="qty-selector">
+                        <button class="qty-btn" onclick="updateCardQty(${product.id}, -1)">-</button>
+                        <input id="qty-${product.id}" class="qty-input" value="1" readonly>
+                        <button class="qty-btn" onclick="updateCardQty(${product.id}, 1)">+</button>
+                    </div>
+                </div>
+                <button class="btn" onclick="addToCart(${product.id})">Add to Cart</button>
+            </div>
+        `;
+    }
+}
+
 // --- Razorpay Payment Integration ---
 function checkout() {
     const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-    
     if(total === 0) return alert("Cart is empty");
 
     const options = {
         "key": RAZORPAY_KEY_ID, 
-        "amount": total * 100, // Amount in paise
+        "amount": total * 100, 
         "currency": "INR",
         "name": "Luxe Store",
-        "description": "Payment for order",
+        "description": "Payment",
         "handler": function (response){
             alert("Payment Successful! Ref: " + response.razorpay_payment_id);
             cart = [];
             localStorage.setItem('cart', JSON.stringify(cart));
             window.location.href = 'index.html';
         },
-        "prefill": {
-            "name": "Valued Customer",
-            "email": "customer@example.com",
-            "contact": "9999999999"
-        },
-        "theme": {
-            "color": "#e67e22"
-        }
+        "theme": { "color": "#e67e22" }
     };
-    
     const rzp1 = new Razorpay(options);
     rzp1.open();
 }

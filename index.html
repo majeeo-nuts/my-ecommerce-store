@@ -3,38 +3,108 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modern E-Commerce</title>
+    <title>GAMACOSMETICOS | Luxury Beauty</title>
     <link rel="stylesheet" href="css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-</head>
+    </head>
 <body>
+    
     <nav>
-        <div class="logo">LUXE STORE</div>
-        <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="shop.html">Shop</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
-        <div class="cart-icon">
-            <a href="cart.html">🛒 <span id="cart-count">0</span></a>
+        <div class="nav-links">
+            <a href="shop.html">Shop All</a>
+            <a href="shop.html">New Arrivals</a>
+        </div>
+        
+        <div class="logo"><a href="index.html">GAMACOSMETICOS</a></div>
+        
+        <div class="nav-links">
+            <a href="about.html">Our World</a>
+            <a href="cart.html">Bag (<span id="cart-count">0</span>)</a>
+        </div>
+        <div class="cart-icon" style="display:none;">
+            <a href="cart.html">👜 <span id="cart-count-mobile">0</span></a>
         </div>
     </nav>
 
     <header class="hero">
-        <div>
-            <h1>Elevate Your Style</h1>
-            <p>Premium accessories, fashion, and more.</p>
+        <div class="hero-content">
+            <p>The New Collection</p>
+            <h1>Redefining Radiance</h1>
             <br>
-            <a href="shop.html" class="btn">Shop Now</a>
+            <a href="shop.html" class="btn-luxury">Discover More</a>
         </div>
     </header>
 
+    <div class="container">
+        <h2 class="section-title">The Curated Edit</h2>
+        <div class="category-grid">
+            
+            <a href="shop.html" class="cat-card">
+                <img src="https://images.unsplash.com/photo-1596462502278-27bfdd403348?q=80&w=800&auto=format&fit=crop" alt="Skincare">
+                <div class="cat-text">Skincare</div>
+            </a>
+            
+            <a href="shop.html" class="cat-card">
+                <img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?q=80&w=800&auto=format&fit=crop" alt="Makeup">
+                <div class="cat-text">Makeup</div>
+            </a>
+            
+            <a href="shop.html" class="cat-card">
+                <img src="https://images.unsplash.com/photo-1617325247661-675ab4b64ae4?q=80&w=800&auto=format&fit=crop" alt="Accessories">
+                <div class="cat-text">Accessories</div>
+            </a>
+
+        </div>
+    </div>
+
+    <div class="container" style="background: #fdfdfd; padding-top: 2rem;">
+        <h2 class="section-title">Iconic Essentials</h2>
+        <div id="featured-grid" class="product-grid">
+            </div>
+        <div style="text-align: center; margin-top: 4rem;">
+            <a href="shop.html" class="btn-luxury" style="color: #000; border: 1px solid #000;">View All Products</a>
+        </div>
+    </div>
+
+    <div class="container" style="display: flex; align-items: center; gap: 4rem; margin-top: 4rem;">
+        <div style="flex: 1;">
+            <img src="https://images.unsplash.com/photo-1571781565023-40f8d4752541?q=80&w=800&auto=format&fit=crop" style="width: 100%; border-radius: 2px;">
+        </div>
+        <div style="flex: 1;">
+            <h2 class="section-title" style="text-align: left;">The Art of Self Care</h2>
+            <p style="font-size: 1.1rem; line-height: 1.8; color: #555;">
+                At Gamacosmeticos, we believe beauty is a ritual, not a routine. Born in Mumbai and inspired by global luxury, our collections are crafted to elevate your everyday moments into extraordinary experiences.
+            </p>
+            <br>
+            <a href="about.html" style="text-decoration: underline; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px;">Read Our Story</a>
+        </div>
+    </div>
+
     <footer>
-        <p>&copy; 2025 Luxe Store. All rights reserved.</p>
+        <p>&copy; 2025 GAMACOSMETICOS. MUMBAI &bullet; PARIS &bullet; NEW YORK</p>
     </footer>
 
     <script src="js/products.js"></script>
     <script src="js/script.js"></script>
+    <script>
+        // Inline script to just load 4 random products for the homepage
+        document.addEventListener('DOMContentLoaded', () => {
+            const grid = document.getElementById('featured-grid');
+            if(grid && typeof products !== 'undefined') {
+                // Get 4 random products
+                const featured = products.slice(0, 4); 
+                grid.innerHTML = featured.map(product => `
+                    <div class="product-card">
+                        <a href="product.html?id=${product.id}">
+                            <img src="${product.image}" alt="${product.name}" class="product-image">
+                        </a>
+                        <div class="product-info">
+                            <h3>${product.name}</h3>
+                            <p class="price">₹${product.price}</p>
+                        </div>
+                    </div>
+                `).join('');
+            }
+        });
+    </script>
 </body>
 </html>
