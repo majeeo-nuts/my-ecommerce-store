@@ -109,5 +109,5 @@ products.forEach(product => {
     
     // 2. Build the full path to match your folder structure
     // Note: We handle the special apostrophe in "Women's Wallet" -> "Women's_Wallet.jpg"
-    product.image = `assets/images/${filename}.jpg`;
+    product.image = `images/${filename}.jpg`;
 });
