@@ -1,6 +1,4 @@
 // --- Product Data ---
-// The 'image' property is automatically generated at the bottom to match your file naming (e.g., "Hair_Scrunchie.jpg")
-
 const products = [
     // Accessories
     { id: 1, name: "Hair Scrunchie", price: 39, category: "Accessories" },
@@ -99,18 +97,17 @@ const products = [
     { id: 74, name: "Rain Poncho Basic", price: 299, category: "Seasonal" },
     { id: 75, name: "Rain Poncho Premium", price: 499, category: "Seasonal" },
     { id: 76, name: "Winter Beanie", price: 249, category: "Seasonal" },
-    { id: 77, name: "Winter Gloves", price: 499, category: "Seasonal" }
+    { id: 77, name: "Winter Gloves", price: 199, category: "Seasonal" }
 ];
 
 // --- Automatic Image Path Generator ---
-// This loop runs automatically to add the correct image link to every product above.
-// It converts "Hair Scrunchie" to "assets/images/Hair_Scrunchie.jpg" matching your screenshot.
-
+// This loops through every product and creates the correct path:
+// "assets/images/" + Name_With_Underscores + ".jpg"
 products.forEach(product => {
-    // 1. Replace all spaces with underscores (e.g., "Hair Scrunchie" -> "Hair_Scrunchie")
+    // 1. Replace spaces with underscores (e.g. "Hair Scrunchie" -> "Hair_Scrunchie")
     let filename = product.name.replace(/ /g, '_');
     
-    // 2. Build the full path using the 'assets' folder shown in your sidebar
-    // Note: We keep special characters like apostrophes because your screenshot showed "Women's_Wallet.jpg"
+    // 2. Build the full path to match your folder structure
+    // Note: We handle the special apostrophe in "Women's Wallet" -> "Women's_Wallet.jpg"
     product.image = `assets/images/${filename}.jpg`;
 });
