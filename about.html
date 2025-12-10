@@ -3,87 +3,175 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - Luxe Store</title>
+    <title>Our World | GAMACOSMETICOS</title>
     <link rel="stylesheet" href="css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+
     <style>
-        /* Page specific styles to keep main CSS clean */
+        /* About Page Specific Styles */
+        body {
+            font-family: 'Lato', sans-serif;
+            color: #333;
+            background-color: #fff;
+        }
+
+        .about-header {
+            text-align: center;
+            padding: 3rem 0;
+            margin-bottom: 2rem;
+        }
+        .about-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+        .about-header p {
+            color: #666;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
         .about-section {
             display: flex;
             align-items: center;
-            gap: 4rem;
-            margin-bottom: 4rem;
+            gap: 5rem;
+            margin-bottom: 6rem;
         }
-        .about-text { flex: 1; }
-        .about-img { flex: 1; border-radius: 8px; box-shadow: var(--shadow); }
+        .about-text { 
+            flex: 1; 
+        }
+        .about-text h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.3;
+        }
+        .about-text p {
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+        }
+        
+        .about-img { 
+            flex: 1; 
+            height: 500px;
+            object-fit: cover;
+            border-radius: 4px; /* Slight radius for softness */
+        }
+
+        /* Values Grid */
+        .values-section {
+            background-color: #fafafa;
+            padding: 4rem 2rem;
+            text-align: center;
+            border-radius: 4px;
+        }
+        .values-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 3rem;
+        }
+
         .values-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            text-align: center;
-            margin-top: 2rem;
+            gap: 3rem;
+            max-width: 1000px;
+            margin: 0 auto;
         }
-        .value-card {
-            background: #fff;
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: var(--shadow);
+        .value-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #000;
         }
+        .value-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+        .value-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
         @media (max-width: 768px) {
-            .about-section { flex-direction: column; }
+            .about-section { 
+                flex-direction: column; 
+                gap: 2rem;
+            }
+            .about-img {
+                height: 300px;
+                width: 100%;
+            }
         }
     </style>
 </head>
 <body>
+
     <nav>
-        <div class="logo">LUXE STORE</div>
-        <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="shop.html">Shop</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
-        <div class="cart-icon">
-            <a href="cart.html">🛒 <span id="cart-count">0</span></a>
+        <div class="nav-links">
+            <a href="shop.html">Shop All</a>
+            <a href="shop.html">New Arrivals</a>
+        </div>
+        
+        <div class="logo"><a href="index.html">GAMACOSMETICOS</a></div>
+        
+        <div class="nav-links">
+            <a href="about.html">Our World</a>
+            <a href="cart.html">Bag (<span id="cart-count">0</span>)</a>
+        </div>
+        <div class="cart-icon" style="display:none;">
+            <a href="cart.html">👜 <span id="cart-count-mobile">0</span></a>
         </div>
     </nav>
 
     <div class="container">
-        <h1>Our Story</h1>
-        <br>
+        <div class="about-header">
+            <p>Our Story</p>
+            <h1>The Essence of Luxury</h1>
+        </div>
         
         <div class="about-section">
             <div class="about-text">
-                <h2>Born in Mumbai, Styled for the World.</h2>
+                <h2>Born in Mumbai, <br>Styled for the World.</h2>
+                <p>Founded in 2025, Gamacosmeticos began with a singular vision: to redefine the modern beauty experience. Operating from the vibrant heart of India's fashion capital, Mumbai, we curate collections that seamlessly blend traditional elegance with contemporary global trends.</p>
+                <p>What started as a curated selection of accessories has blossomed into a premier destination for those who seek refinement in every detail. We believe that true style is not just what you wear, but a reflection of who you are.</p>
                 <br>
-                <p>Founded in 2025, Luxe Store began with a simple mission: to make premium fashion accessible without the premium price tag. Operating from the heart of India's fashion capital, Mumbai, we curate collections that blend traditional elegance with modern trends.</p>
-                <br>
-                <p>What started as a small curated list of accessories has grown into a full-fledged fashion destination. We believe that style is a way to say who you are without having to speak.</p>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Signature_sample.svg/1200px-Signature_sample.svg.png" style="width: 150px; opacity: 0.6;" alt="Signature">
             </div>
-            <img src="https://placehold.co/600x400?text=Our+Office+in+Mumbai" alt="About Us" class="about-img">
+            <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=800&auto=format&fit=crop" alt="Our Studio" class="about-img">
         </div>
 
-        <hr style="border: 0; border-top: 1px solid #ddd; margin: 2rem 0;">
-
-        <h2 style="text-align: center;">Why Choose Us?</h2>
-        <div class="values-grid">
-            <div class="value-card">
-                <h3>✨ Premium Quality</h3>
-                <p>We handpick every item to ensure it meets our strict quality standards.</p>
-            </div>
-            <div class="value-card">
-                <h3>🚚 Fast Shipping</h3>
-                <p>Dispatched directly from Mumbai to reach you in record time.</p>
-            </div>
-            <div class="value-card">
-                <h3>🤝 Customer First</h3>
-                <p>We don't just sell products; we build relationships.</p>
+        <div class="values-section">
+            <h2>Our Core Values</h2>
+            <div class="values-grid">
+                <div class="value-card">
+                    <span class="value-icon">✨</span>
+                    <h3>Uncompromising Quality</h3>
+                    <p>We hand-select every item in our collection, ensuring it meets the highest standards of craftsmanship and durability.</p>
+                </div>
+                <div class="value-card">
+                    <span class="value-icon">🌍</span>
+                    <h3>Global Inspiration</h3>
+                    <p>While our roots are in India, our eyes are on the world. We bring you trends from Paris, Milan, and New York.</p>
+                </div>
+                <div class="value-card">
+                    <span class="value-icon">🤝</span>
+                    <h3>Personalized Service</h3>
+                    <p>We believe in building lasting relationships. Our client service team is dedicated to your complete satisfaction.</p>
+                </div>
             </div>
         </div>
     </div>
 
     <footer>
-        <p>&copy; 2025 Luxe Store. All rights reserved.</p>
+        <p>&copy; 2025 GAMACOSMETICOS. MUMBAI &bullet; PARIS &bullet; NEW YORK</p>
     </footer>
 
     <script src="js/products.js"></script>
