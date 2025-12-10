@@ -5,7 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GAMACOSMETICOS | Luxury Beauty</title>
     <link rel="stylesheet" href="css/style.css">
-    </head>
+    <style>
+        /* Small inline adjustment to ensure grid looks good */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            width: 100%;
+        }
+        .product-card {
+            border: 1px solid #f0f0f0;
+            transition: all 0.3s ease;
+        }
+        .product-card:hover {
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+    </style>
+</head>
 <body>
     
     <nav>
@@ -58,8 +74,10 @@
 
     <div class="container" style="background: #fdfdfd; padding-top: 2rem;">
         <h2 class="section-title">Iconic Essentials</h2>
-        <div id="featured-grid" class="product-grid">
+        
+        <div id="featured-list" class="product-grid">
             </div>
+
         <div style="text-align: center; margin-top: 4rem;">
             <a href="shop.html" class="btn-luxury" style="color: #000; border: 1px solid #000;">View All Products</a>
         </div>
@@ -85,26 +103,6 @@
 
     <script src="js/products.js"></script>
     <script src="js/script.js"></script>
-    <script>
-        // Inline script to just load 4 random products for the homepage
-        document.addEventListener('DOMContentLoaded', () => {
-            const grid = document.getElementById('featured-grid');
-            if(grid && typeof products !== 'undefined') {
-                // Get 4 random products
-                const featured = products.slice(0, 4); 
-                grid.innerHTML = featured.map(product => `
-                    <div class="product-card">
-                        <a href="product.html?id=${product.id}">
-                            <img src="${product.image}" alt="${product.name}" class="product-image">
-                        </a>
-                        <div class="product-info">
-                            <h3>${product.name}</h3>
-                            <p class="price">₹${product.price}</p>
-                        </div>
-                    </div>
-                `).join('');
-            }
-        });
-    </script>
+
 </body>
 </html>

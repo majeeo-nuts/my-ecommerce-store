@@ -7,9 +7,16 @@
     <link rel="stylesheet" href="css/style.css">
     <style>
         /* --- Shop Specific Luxury Styles --- */
+        body {
+            font-family: 'Lato', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
         .shop-header {
             text-align: center;
-            padding: 2rem 0 4rem;
+            padding: 2rem 0 3rem;
         }
         .shop-header h1 {
             font-family: 'Playfair Display', serif;
@@ -65,6 +72,91 @@
             letter-spacing: 1px;
             cursor: pointer;
             outline: none;
+        }
+
+        /* --- Product Grid Layout (Crucial for Display) --- */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+            width: 100%;
+        }
+
+        .product-card {
+            border: 1px solid #f9f9f9;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            background: #fff;
+            overflow: hidden;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 280px;
+            object-fit: cover; /* Ensures images don't stretch */
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .product-info {
+            padding: 15px;
+            text-align: center;
+        }
+
+        .product-info h3 {
+            font-size: 1rem;
+            margin: 10px 0 5px;
+            font-weight: 600;
+        }
+
+        .card-actions {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .qty-selector {
+            display: flex;
+            align-items: center;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .qty-btn {
+            background: none;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+
+        .qty-input {
+            width: 30px;
+            text-align: center;
+            border: none;
+            font-weight: bold;
+        }
+
+        .add-btn {
+            background: #000;
+            color: #fff;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-size: 0.7rem;
+            letter-spacing: 1px;
+        }
+
+        .add-btn:hover {
+            background: #333;
         }
 
         @media (max-width: 768px) {

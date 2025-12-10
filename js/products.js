@@ -1,45 +1,8 @@
-// --- Helper: Generate Luxury Gradient+Emoji Placeholder Images ---
-function getPlaceholder(name, category) {
-    // Elegant/Luxury Color Palette
-    const configs = {
-        "Accessories":       { emoji: "🎀", color1: "#FAD0C4", color2: "#FFD1FF" }, // Rose Gold
-        "Imitation Jewellery": { emoji: "✨", color1: "#E0C3FC", color2: "#C2E9FB" }, // Silver/Lavender
-        "Makeup":            { emoji: "💄", color1: "#ffdde1", color2: "#ee9ca7" }, // Soft Rouge
-        "Skincare":          { emoji: "🧴", color1: "#d299c2", color2: "#fef9d7" }, // Nude/Cream
-        "Haircare":          { emoji: "🧖‍♀️", color1: "#89f7fe", color2: "#66a6ff" }, // Clean Blue
-        "Private Label":     { emoji: "🏷️", color1: "#e0c3fc", color2: "#8ec5fc" }, // Soft Purple
-        "Women Fashion":     { emoji: "👗", color1: "#a8edea", color2: "#fed6e3" }, // Fashion Pastel
-        "Ethnic Wear":       { emoji: "🥻", color1: "#ff9a9e", color2: "#fecfef" }, // Vibrant Pink
-        "Men Fashion":       { emoji: "👕", color1: "#e6dee9", color2: "#bdc2e8" }, // Cool Grey
-        "Beauty Tools":      { emoji: "✂️", color1: "#cfd9df", color2: "#e2ebf0" }, // Metallic
-        "Seasonal":          { emoji: "🎁", color1: "#fbc2eb", color2: "#a6c1ee" }  // Festive
-    };
+// --- Product Data ---
+// The 'image' property is automatically generated at the bottom to match your file naming (e.g., "Hair_Scrunchie.jpg")
 
-    // Default Fallback
-    const config = configs[category] || { emoji: "🛍️", color1: "#f5f7fa", color2: "#c3cfe2" };
-
-    // Create SVG Data URI
-    const svg = `
-    <svg width="400" height="400" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-            <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" style="stop-color:${config.color1};stop-opacity:1" />
-                <stop offset="100%" style="stop-color:${config.color2};stop-opacity:1" />
-            </linearGradient>
-        </defs>
-        <rect width="100%" height="100%" fill="url(#grad)" />
-        <text x="50%" y="50%" font-family="Arial, sans-serif" font-size="100" 
-              fill="rgba(255,255,255,0.9)" dominant-baseline="middle" text-anchor="middle"
-              style="filter: drop-shadow(0px 2px 5px rgba(0,0,0,0.1));">
-            ${config.emoji}
-        </text>
-    </svg>`;
-
-    return `data:image/svg+xml;base64,${btoa(unescape(encodeURIComponent(svg)))}`;
-}
-
-// --- The Complete Product List ---
-const rawProducts = [
+const products = [
+    // Accessories
     { id: 1, name: "Hair Scrunchie", price: 39, category: "Accessories" },
     { id: 2, name: "Hair Clips Set", price: 49, category: "Accessories" },
     { id: 3, name: "Claw Clip Large", price: 79, category: "Accessories" },
@@ -47,11 +10,15 @@ const rawProducts = [
     { id: 5, name: "Women's Wallet", price: 399, category: "Accessories" },
     { id: 6, name: "Women Belt", price: 299, category: "Accessories" },
     { id: 7, name: "Fashion Sunglasses", price: 499, category: "Accessories" },
+
+    // Imitation Jewellery
     { id: 8, name: "Oxidised Earrings", price: 129, category: "Imitation Jewellery" },
     { id: 9, name: "Jhumkas Pair", price: 159, category: "Imitation Jewellery" },
     { id: 10, name: "Kundan Necklace Set", price: 349, category: "Imitation Jewellery" },
     { id: 11, name: "Daily Wear Chain", price: 149, category: "Imitation Jewellery" },
     { id: 12, name: "Bracelet Fashion", price: 129, category: "Imitation Jewellery" },
+
+    // Makeup
     { id: 13, name: "Lipstick Value", price: 199, category: "Makeup" },
     { id: 14, name: "Liquid Matte Lipstick", price: 349, category: "Makeup" },
     { id: 15, name: "Compact Powder", price: 249, category: "Makeup" },
@@ -61,6 +28,8 @@ const rawProducts = [
     { id: 19, name: "Mascara Value", price: 299, category: "Makeup" },
     { id: 20, name: "Nail Paint Basic", price: 69, category: "Makeup" },
     { id: 21, name: "Nail Paint Premium", price: 149, category: "Makeup" },
+
+    // Skincare
     { id: 22, name: "Face Wash Basic", price: 149, category: "Skincare" },
     { id: 23, name: "Face Wash Premium", price: 259, category: "Skincare" },
     { id: 24, name: "Moisturizer Basic", price: 159, category: "Skincare" },
@@ -70,6 +39,8 @@ const rawProducts = [
     { id: 28, name: "Serum Vit C", price: 299, category: "Skincare" },
     { id: 29, name: "Serum Niacinamide", price: 449, category: "Skincare" },
     { id: 30, name: "Sheet Mask Single", price: 59, category: "Skincare" },
+
+    // Haircare
     { id: 31, name: "Shampoo Basic", price: 149, category: "Haircare" },
     { id: 32, name: "Shampoo Premium", price: 299, category: "Haircare" },
     { id: 33, name: "Conditioner Basic", price: 169, category: "Haircare" },
@@ -78,6 +49,8 @@ const rawProducts = [
     { id: 36, name: "Hair Oil Premium", price: 249, category: "Haircare" },
     { id: 37, name: "Hair Serum Basic", price: 249, category: "Haircare" },
     { id: 38, name: "Hair Serum Premium", price: 399, category: "Haircare" },
+
+    // Private Label (Leggings/Bottoms)
     { id: 39, name: "Cotton Leggings Basic", price: 299, category: "Private Label" },
     { id: 40, name: "Cotton Leggings Premium", price: 399, category: "Private Label" },
     { id: 41, name: "Jeggings Basic", price: 499, category: "Private Label" },
@@ -85,6 +58,8 @@ const rawProducts = [
     { id: 43, name: "Cotton Top Basic", price: 349, category: "Private Label" },
     { id: 44, name: "Cotton Top Premium", price: 499, category: "Private Label" },
     { id: 45, name: "Long Tunic", price: 499, category: "Private Label" },
+
+    // Women Fashion
     { id: 46, name: "Casual Top Basic", price: 399, category: "Women Fashion" },
     { id: 47, name: "Casual Top Premium", price: 799, category: "Women Fashion" },
     { id: 48, name: "Casual Dress Basic", price: 699, category: "Women Fashion" },
@@ -93,12 +68,16 @@ const rawProducts = [
     { id: 51, name: "Jeans Premium", price: 1499, category: "Women Fashion" },
     { id: 52, name: "Palazzo Basic", price: 349, category: "Women Fashion" },
     { id: 53, name: "Palazzo Premium", price: 699, category: "Women Fashion" },
+
+    // Ethnic Wear
     { id: 54, name: "Kurti Basic", price: 399, category: "Ethnic Wear" },
     { id: 55, name: "Kurti Premium", price: 799, category: "Ethnic Wear" },
     { id: 56, name: "Kurti Set Basic", price: 899, category: "Ethnic Wear" },
     { id: 57, name: "Kurti Set Premium", price: 1699, category: "Ethnic Wear" },
     { id: 58, name: "Dupatta Basic", price: 149, category: "Ethnic Wear" },
     { id: 59, name: "Dupatta Premium", price: 349, category: "Ethnic Wear" },
+
+    // Men Fashion
     { id: 60, name: "T-shirt Basic", price: 349, category: "Men Fashion" },
     { id: 61, name: "T-shirt Premium", price: 499, category: "Men Fashion" },
     { id: 62, name: "Casual Shirt Basic", price: 499, category: "Men Fashion" },
@@ -106,11 +85,15 @@ const rawProducts = [
     { id: 64, name: "Joggers Basic", price: 499, category: "Men Fashion" },
     { id: 65, name: "Joggers Premium", price: 899, category: "Men Fashion" },
     { id: 66, name: "Men Wallet", price: 299, category: "Men Fashion" },
+
+    // Beauty Tools
     { id: 67, name: "Makeup Sponge", price: 149, category: "Beauty Tools" },
     { id: 68, name: "Tweezers Basic", price: 99, category: "Beauty Tools" },
     { id: 69, name: "Tweezers Premium", price: 199, category: "Beauty Tools" },
     { id: 70, name: "Compact Mirror", price: 99, category: "Beauty Tools" },
     { id: 71, name: "Travel Bottle Set", price: 199, category: "Beauty Tools" },
+
+    // Seasonal
     { id: 72, name: "Gift Hamper Basic", price: 499, category: "Seasonal" },
     { id: 73, name: "Gift Hamper Premium", price: 999, category: "Seasonal" },
     { id: 74, name: "Rain Poncho Basic", price: 299, category: "Seasonal" },
@@ -119,8 +102,15 @@ const rawProducts = [
     { id: 77, name: "Winter Gloves", price: 499, category: "Seasonal" }
 ];
 
-// Combine raw data with image generator
-const products = rawProducts.map(p => ({
-    ...p,
-    image: getPlaceholder(p.name, p.category)
-}));
+// --- Automatic Image Path Generator ---
+// This loop runs automatically to add the correct image link to every product above.
+// It converts "Hair Scrunchie" to "assets/images/Hair_Scrunchie.jpg" matching your screenshot.
+
+products.forEach(product => {
+    // 1. Replace all spaces with underscores (e.g., "Hair Scrunchie" -> "Hair_Scrunchie")
+    let filename = product.name.replace(/ /g, '_');
+    
+    // 2. Build the full path using the 'assets' folder shown in your sidebar
+    // Note: We keep special characters like apostrophes because your screenshot showed "Women's_Wallet.jpg"
+    product.image = `assets/images/${filename}.jpg`;
+});
