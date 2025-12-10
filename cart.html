@@ -5,241 +5,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Bag | GAMACOSMETICOS</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-    
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-
     <style>
-        /* --- Cart Specific Styles --- */
-        body {
-            font-family: 'Lato', sans-serif;
-            background-color: #fff;
-            color: #333;
-        }
-
-        /* Cart Page Layout */
-        .cart-wrapper {
-            max-width: 1200px;
-            margin: 40px auto;
-            padding: 0 20px;
-            display: grid;
-            grid-template-columns: 2fr 1fr; /* Split: 2/3 Items, 1/3 Summary */
-            gap: 50px;
-        }
-
-        .cart-header {
-            text-align: center;
-            margin-bottom: 40px;
-            padding-top: 20px;
-        }
-        .cart-header h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            margin: 0;
-            letter-spacing: 1px;
-        }
-
-        /* Table Styling */
-        .cart-table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        
-        .cart-table th {
-            text-align: left;
-            padding-bottom: 15px;
-            border-bottom: 1px solid #e0e0e0;
-            text-transform: uppercase;
-            font-size: 0.75rem;
-            letter-spacing: 1.5px;
-            color: #777;
-            font-weight: 600;
-        }
-
-        .cart-table td {
-            padding: 25px 0;
-            border-bottom: 1px solid #f5f5f5;
-            vertical-align: middle;
-        }
-
-        /* Image & Name Column */
-        .cart-table td:first-child div {
-            font-weight: 600;
-            font-size: 1rem;
-            color: #222;
-        }
-
-        /* Buttons & Quantity */
-        .qty-wrapper button {
-            background: #f0f0f0;
-            border: none;
-            width: 25px;
-            height: 25px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 1rem;
-            line-height: 1;
-            transition: 0.2s;
-        }
-        .qty-wrapper button:hover {
-            background: #ddd;
-        }
-
-        /* Order Summary Box */
-        .order-summary {
-            background-color: #fafafa;
-            padding: 30px;
-            border-radius: 8px;
-            height: fit-content;
-            position: sticky;
-            top: 20px;
-        }
-
-        .order-summary h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            margin-top: 0;
-            border-bottom: 1px solid #e0e0e0;
-            padding-bottom: 15px;
-            margin-bottom: 20px;
-        }
-
-        .summary-row {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 15px;
-            font-size: 0.95rem;
-            color: #555;
-        }
-
-        .summary-total {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 20px;
-            padding-top: 20px;
-            border-top: 2px solid #ddd;
-            font-weight: 700;
-            font-size: 1.2rem;
-            color: #000;
-        }
-
-        .btn-checkout {
-            background-color: #000;
-            color: #fff;
-            width: 100%;
-            padding: 15px;
-            border: none;
-            border-radius: 4px;
-            font-size: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-top: 25px;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-        .btn-checkout:hover {
-            background-color: #333;
-        }
-
-        .secure-badge {
-            text-align: center;
-            font-size: 0.8rem;
-            color: #888;
-            margin-top: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 5px;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .cart-wrapper {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
-            .cart-table th:nth-child(2), 
-            .cart-table td:nth-child(2) { /* Hide Price Column on Mobile */
-                display: none;
-            }
-        }
+        .cart-wrapper { display: grid; grid-template-columns: 2fr 1fr; gap: 50px; margin-top: 40px; }
+        .cart-table { width: 100%; border-collapse: collapse; }
+        .cart-table th { text-align: left; padding-bottom: 15px; border-bottom: 1px solid #e0e0e0; text-transform: uppercase; font-size: 0.75rem; color: #777; }
+        .cart-table td { padding: 25px 0; border-bottom: 1px solid #f5f5f5; vertical-align: middle; }
+        .order-summary { background-color: #fafafa; padding: 30px; border-radius: 4px; }
+        .summary-row { display: flex; justify-content: space-between; margin-bottom: 15px; font-size: 0.95rem; }
+        .summary-total { display: flex; justify-content: space-between; margin-top: 20px; padding-top: 20px; border-top: 2px solid #ddd; font-weight: 700; font-size: 1.2rem; }
+        .btn-checkout { background-color: #000; color: #fff; width: 100%; padding: 15px; border: none; font-size: 1rem; text-transform: uppercase; margin-top: 25px; cursor: pointer; }
+        @media (max-width: 768px) { .cart-wrapper { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
-
     <nav>
-        <div class="nav-links">
-            <a href="shop.html">Shop All</a>
-            <a href="shop.html">New Arrivals</a>
-        </div>
-        
+        <div class="nav-links"><a href="shop.html">Shop All</a></div>
         <div class="logo"><a href="index.html">GAMACOSMETICOS</a></div>
-        
-        <div class="nav-links">
-            <a href="about.html">Our World</a>
-            <a href="cart.html" style="font-weight: bold;">Bag (<span id="cart-count">0</span>)</a>
-        </div>
-        <div class="cart-icon" style="display:none;">
-            <a href="cart.html">👜 <span id="cart-count-mobile">0</span></a>
-        </div>
+        <div class="nav-links"><a href="cart.html" style="font-weight:bold;">Bag (<span id="cart-count">0</span>)</a></div>
     </nav>
 
-    <div class="cart-header">
-        <h1>Your Shopping Bag</h1>
-        <p style="margin-top:10px; color:#777;"><a href="shop.html" style="color:#777; text-decoration:underline;">Continue Shopping</a></p>
-    </div>
-
-    <div class="cart-wrapper">
-        <div class="cart-items-section">
-            <table class="cart-table">
-                <thead>
-                    <tr>
-                        <th width="50%">Product</th>
-                        <th width="15%">Price</th>
-                        <th width="20%">Quantity</th>
-                        <th width="15%" style="text-align:right;">Total</th>
-                    </tr>
-                </thead>
-                <tbody id="cart-items"></tbody>
-            </table>
+    <div class="container">
+        <div style="text-align: center; margin-bottom: 40px; padding-top: 20px;">
+            <h1 style="font-family: 'Playfair Display', serif; font-size: 2.5rem;">Your Shopping Bag</h1>
+            <a href="shop.html" style="color:#777; text-decoration:underline;">Continue Shopping</a>
         </div>
 
-        <div class="order-summary">
-            <h2>Order Summary</h2>
-            
-            <div class="summary-row">
-                <span>Subtotal</span>
-                <span>₹<span id="subtotal-display">0</span></span> </div>
-            
-            <div class="summary-row">
-                <span>Shipping Estimate</span>
-                <span style="color: green;">Free</span>
+        <div class="cart-wrapper">
+            <div class="cart-items-section">
+                <table class="cart-table">
+                    <thead><tr><th width="50%">Product</th><th width="15%">Price</th><th width="20%">Quantity</th><th width="15%" style="text-align:right;">Total</th></tr></thead>
+                    <tbody id="cart-items"></tbody>
+                </table>
             </div>
-            
-            <div class="summary-row">
-                <span>Tax (GST Included)</span>
-                <span>₹0.00</span>
-            </div>
-
-            <div class="summary-total">
-                <span>Grand Total</span>
-                <span>₹<span id="cart-total">0</span></span>
-            </div>
-
-            <button class="btn-checkout" onclick="checkout()">Checkout Securely</button>
-            
-            <div class="secure-badge">
-                🔒 Secure SSL Encryption
+            <div class="order-summary">
+                <h2 style="font-family: 'Playfair Display', serif; margin-top:0; border-bottom:1px solid #e0e0e0; padding-bottom:15px;">Order Summary</h2>
+                <div class="summary-row"><span>Subtotal</span><span>₹<span id="subtotal-display">0</span></span></div>
+                <div class="summary-row"><span>Shipping</span><span style="color: green;">Free</span></div>
+                <div class="summary-total"><span>Grand Total</span><span>₹<span id="cart-total">0</span></span></div>
+                <button class="btn-checkout" onclick="checkout()">Checkout Securely</button>
+                <div style="text-align:center; font-size:0.8rem; color:#888; margin-top:15px;">🔒 Secure SSL Encryption</div>
             </div>
         </div>
     </div>
 
-    <footer>
-        <p>&copy; 2025 GAMACOSMETICOS. MUMBAI &bullet; PARIS &bullet; NEW YORK</p>
-    </footer>
-
+    <footer><p>&copy; 2025 GAMACOSMETICOS</p></footer>
     <script src="js/products.js"></script>
     <script src="js/script.js"></script>
 </body>

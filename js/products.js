@@ -1,6 +1,4 @@
-// --- Product Data ---
 const products = [
-    // Accessories
     { id: 1, name: "Hair Scrunchie", price: 39, category: "Accessories" },
     { id: 2, name: "Hair Clips Set", price: 49, category: "Accessories" },
     { id: 3, name: "Claw Clip Large", price: 79, category: "Accessories" },
@@ -8,15 +6,11 @@ const products = [
     { id: 5, name: "Women's Wallet", price: 399, category: "Accessories" },
     { id: 6, name: "Women Belt", price: 299, category: "Accessories" },
     { id: 7, name: "Fashion Sunglasses", price: 499, category: "Accessories" },
-
-    // Imitation Jewellery
     { id: 8, name: "Oxidised Earrings", price: 129, category: "Imitation Jewellery" },
     { id: 9, name: "Jhumkas Pair", price: 159, category: "Imitation Jewellery" },
     { id: 10, name: "Kundan Necklace Set", price: 349, category: "Imitation Jewellery" },
     { id: 11, name: "Daily Wear Chain", price: 149, category: "Imitation Jewellery" },
     { id: 12, name: "Bracelet Fashion", price: 129, category: "Imitation Jewellery" },
-
-    // Makeup
     { id: 13, name: "Lipstick Value", price: 199, category: "Makeup" },
     { id: 14, name: "Liquid Matte Lipstick", price: 349, category: "Makeup" },
     { id: 15, name: "Compact Powder", price: 249, category: "Makeup" },
@@ -26,8 +20,6 @@ const products = [
     { id: 19, name: "Mascara Value", price: 299, category: "Makeup" },
     { id: 20, name: "Nail Paint Basic", price: 69, category: "Makeup" },
     { id: 21, name: "Nail Paint Premium", price: 149, category: "Makeup" },
-
-    // Skincare
     { id: 22, name: "Face Wash Basic", price: 149, category: "Skincare" },
     { id: 23, name: "Face Wash Premium", price: 259, category: "Skincare" },
     { id: 24, name: "Moisturizer Basic", price: 159, category: "Skincare" },
@@ -37,8 +29,6 @@ const products = [
     { id: 28, name: "Serum Vit C", price: 299, category: "Skincare" },
     { id: 29, name: "Serum Niacinamide", price: 449, category: "Skincare" },
     { id: 30, name: "Sheet Mask Single", price: 59, category: "Skincare" },
-
-    // Haircare
     { id: 31, name: "Shampoo Basic", price: 149, category: "Haircare" },
     { id: 32, name: "Shampoo Premium", price: 299, category: "Haircare" },
     { id: 33, name: "Conditioner Basic", price: 169, category: "Haircare" },
@@ -47,8 +37,6 @@ const products = [
     { id: 36, name: "Hair Oil Premium", price: 249, category: "Haircare" },
     { id: 37, name: "Hair Serum Basic", price: 249, category: "Haircare" },
     { id: 38, name: "Hair Serum Premium", price: 399, category: "Haircare" },
-
-    // Private Label (Leggings/Bottoms)
     { id: 39, name: "Cotton Leggings Basic", price: 299, category: "Private Label" },
     { id: 40, name: "Cotton Leggings Premium", price: 399, category: "Private Label" },
     { id: 41, name: "Jeggings Basic", price: 499, category: "Private Label" },
@@ -56,8 +44,6 @@ const products = [
     { id: 43, name: "Cotton Top Basic", price: 349, category: "Private Label" },
     { id: 44, name: "Cotton Top Premium", price: 499, category: "Private Label" },
     { id: 45, name: "Long Tunic", price: 499, category: "Private Label" },
-
-    // Women Fashion
     { id: 46, name: "Casual Top Basic", price: 399, category: "Women Fashion" },
     { id: 47, name: "Casual Top Premium", price: 799, category: "Women Fashion" },
     { id: 48, name: "Casual Dress Basic", price: 699, category: "Women Fashion" },
@@ -66,16 +52,12 @@ const products = [
     { id: 51, name: "Jeans Premium", price: 1499, category: "Women Fashion" },
     { id: 52, name: "Palazzo Basic", price: 349, category: "Women Fashion" },
     { id: 53, name: "Palazzo Premium", price: 699, category: "Women Fashion" },
-
-    // Ethnic Wear
     { id: 54, name: "Kurti Basic", price: 399, category: "Ethnic Wear" },
     { id: 55, name: "Kurti Premium", price: 799, category: "Ethnic Wear" },
     { id: 56, name: "Kurti Set Basic", price: 899, category: "Ethnic Wear" },
     { id: 57, name: "Kurti Set Premium", price: 1699, category: "Ethnic Wear" },
     { id: 58, name: "Dupatta Basic", price: 149, category: "Ethnic Wear" },
     { id: 59, name: "Dupatta Premium", price: 349, category: "Ethnic Wear" },
-
-    // Men Fashion
     { id: 60, name: "T-shirt Basic", price: 349, category: "Men Fashion" },
     { id: 61, name: "T-shirt Premium", price: 499, category: "Men Fashion" },
     { id: 62, name: "Casual Shirt Basic", price: 499, category: "Men Fashion" },
@@ -83,15 +65,11 @@ const products = [
     { id: 64, name: "Joggers Basic", price: 499, category: "Men Fashion" },
     { id: 65, name: "Joggers Premium", price: 899, category: "Men Fashion" },
     { id: 66, name: "Men Wallet", price: 299, category: "Men Fashion" },
-
-    // Beauty Tools
     { id: 67, name: "Makeup Sponge", price: 149, category: "Beauty Tools" },
     { id: 68, name: "Tweezers Basic", price: 99, category: "Beauty Tools" },
     { id: 69, name: "Tweezers Premium", price: 199, category: "Beauty Tools" },
     { id: 70, name: "Compact Mirror", price: 99, category: "Beauty Tools" },
     { id: 71, name: "Travel Bottle Set", price: 199, category: "Beauty Tools" },
-
-    // Seasonal
     { id: 72, name: "Gift Hamper Basic", price: 499, category: "Seasonal" },
     { id: 73, name: "Gift Hamper Premium", price: 999, category: "Seasonal" },
     { id: 74, name: "Rain Poncho Basic", price: 299, category: "Seasonal" },
@@ -100,14 +78,7 @@ const products = [
     { id: 77, name: "Winter Gloves", price: 199, category: "Seasonal" }
 ];
 
-// --- Automatic Image Path Generator ---
-// This loop runs automatically to add the correct image link to every product.
-// It converts "Hair Scrunchie" -> "assets/images/Hair_Scrunchie.jpg"
-
 products.forEach(product => {
-    // 1. Replace all spaces with underscores (e.g., "Winter Gloves" -> "Winter_Gloves")
     let filename = product.name.replace(/ /g, '_');
-    
-    // 2. Build the full path to your assets folder
     product.image = `assets/images/${filename}.jpg`;
 });

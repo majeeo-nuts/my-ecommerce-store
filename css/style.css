@@ -1,120 +1,29 @@
-/* --- GAMACOSMETICOS LUXURY THEME --- */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Lato:wght@300;400;700&display=swap');
-
-:root {
-    --primary: #000000;      /* Jet Black */
-    --secondary: #1a1a1a;    /* Soft Black */
-    --accent: #C5A059;       /* Muted Gold */
-    --light: #f9f9f9;        /* Off White */
-    --white: #ffffff;
-    --font-heading: 'Playfair Display', serif; /* The "Dior" font */
-    --font-body: 'Lato', sans-serif;
-}
-
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { background-color: var(--white); color: var(--primary); font-family: var(--font-body); }
-a { text-decoration: none; color: inherit; transition: 0.3s; }
-img { max-width: 100%; display: block; }
-ul { list-style: none; }
-
-/* --- Minimalist Navigation --- */
-nav {
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 1.5rem 4%; background: var(--white); 
-    border-bottom: 1px solid #f0f0f0; position: sticky; top: 0; z-index: 1000;
-}
-.logo { 
-    font-family: var(--font-heading); font-size: 1.8rem; font-weight: 600; 
-    letter-spacing: 2px; text-transform: uppercase; 
-}
-.nav-links { display: flex; gap: 3rem; }
-.nav-links a { 
-    text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px; color: #555; 
-}
-.nav-links a:hover { color: var(--primary); }
-
-/* --- High-Fashion Hero --- */
-.hero {
-    height: 85vh;
-    background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?q=80&w=1920&auto=format&fit=crop');
-    background-size: cover; background-position: center;
-    display: flex; align-items: center; justify-content: center; text-align: center;
-    color: var(--white);
-}
-.hero-content h1 {
-    font-family: var(--font-heading); font-size: 4.5rem; 
-    font-style: italic; margin-bottom: 1rem;
-}
-.hero-content p {
-    font-size: 1.1rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 2rem;
-}
-.btn-luxury {
-    padding: 1rem 3rem; border: 1px solid var(--white); background: transparent;
-    color: var(--white); text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem;
-    cursor: pointer; transition: 0.3s;
-}
-.btn-luxury:hover { background: var(--white); color: var(--primary); }
-
-/* --- Editorial Categories --- */
-.container { padding: 5rem 4%; max-width: 1400px; margin: 0 auto; }
-.section-title {
-    text-align: center; font-family: var(--font-heading); font-size: 2.5rem;
-    margin-bottom: 3rem; color: var(--primary);
-}
-.category-grid {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;
-}
-.cat-card {
-    position: relative; height: 400px; overflow: hidden; cursor: pointer;
-}
-.cat-card img {
-    width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease;
-}
+/* GLOBAL STYLES */
+body { font-family: 'Lato', sans-serif; margin: 0; padding: 0; color: #333; background: #fff; }
+nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; background: #fff; border-bottom: 1px solid #f0f0f0; }
+.logo a { font-family: 'Playfair Display', serif; font-size: 1.5rem; text-decoration: none; color: #000; letter-spacing: 2px; }
+.nav-links a { text-decoration: none; color: #555; margin: 0 15px; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; }
+.hero { height: 80vh; background: #fdfdfd; display: flex; align-items: center; justify-content: center; text-align: center; }
+.hero h1 { font-family: 'Playfair Display', serif; font-size: 4rem; margin: 10px 0; }
+.btn-luxury { padding: 15px 40px; background: #000; color: #fff; text-decoration: none; text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem; display: inline-block; transition: 0.3s; }
+.btn-luxury:hover { background: #333; }
+.container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
+.section-title { text-align: center; font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 3rem; }
+.product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 30px; }
+.product-card { border: 1px solid #f9f9f9; text-align: center; background: #fff; transition: 0.3s; }
+.product-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+.product-image { width: 100%; height: 300px; object-fit: cover; }
+.product-info { padding: 15px; }
+.product-info h3 { font-size: 1rem; margin: 10px 0; font-weight: 400; }
+.category-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.cat-card { position: relative; display: block; overflow: hidden; }
+.cat-card img { width: 100%; height: 400px; object-fit: cover; transition: 0.5s; }
 .cat-card:hover img { transform: scale(1.05); }
-.cat-text {
-    position: absolute; bottom: 30px; left: 30px; color: var(--white);
-    font-family: var(--font-heading); font-size: 1.8rem; text-shadow: 0 2px 10px rgba(0,0,0,0.3);
-}
-
-/* --- Product Cards (Minimal) --- */
-.product-grid {
-    display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 3rem;
-}
-.product-card { border: none; transition: 0.3s; }
-.product-image { height: 320px; object-fit: cover; width: 100%; margin-bottom: 1rem; }
-.product-info { text-align: center; }
-.product-info h3 { 
-    font-family: var(--font-body); font-size: 1rem; font-weight: 400; margin-bottom: 0.5rem; 
-}
-.price { font-family: var(--font-heading); font-size: 1.2rem; color: var(--primary); }
-
-/* --- Actions & Stepper --- */
-.card-actions { display: flex; justify-content: center; align-items: center; gap: 10px; margin-top: 1rem; }
-.add-btn {
-    background: var(--primary); color: var(--white); border: none;
-    padding: 0.6rem 1.5rem; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 1px;
-    cursor: pointer;
-}
-.add-btn:hover { background: #333; }
-.qty-selector { border: 1px solid #ddd; display: flex; align-items: center; height: 33px; }
-.qty-btn { background: none; border: none; padding: 0 8px; cursor: pointer; }
-.qty-input { width: 30px; text-align: center; border: none; }
-
-/* --- Footer --- */
-footer { 
-    background: var(--secondary); color: #888; padding: 4rem 4%; 
-    text-align: center; font-size: 0.9rem; letter-spacing: 0.5px;
-}
-
-/* --- Mobile --- */
-@media (max-width: 768px) {
-    .hero-content h1 { font-size: 2.5rem; }
-    .nav-links { display: none; }
-}
-
-/* --- Toast --- */
-.toast {
-    position: fixed; bottom: 20px; right: 20px; background: var(--primary); color: white;
-    padding: 1rem 2rem; z-index: 2000; transform: translateY(100px); transition: 0.3s;
-}
-.toast.show { transform: translateY(0); }
+.cat-text { position: absolute; bottom: 20px; left: 20px; color: #fff; font-family: 'Playfair Display', serif; font-size: 1.5rem; text-shadow: 0 2px 5px rgba(0,0,0,0.3); }
+footer { background: #000; color: #fff; text-align: center; padding: 40px; margin-top: 50px; font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; }
+.toast { visibility: hidden; min-width: 250px; background-color: #333; color: #fff; text-align: center; border-radius: 2px; padding: 16px; position: fixed; z-index: 1; left: 50%; bottom: 30px; transform: translateX(-50%); }
+.toast.show { visibility: visible; -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s; animation: fadein 0.5s, fadeout 0.5s 2.5s; }
+@-webkit-keyframes fadein { from {bottom: 0; opacity: 0;} to {bottom: 30px; opacity: 1;} }
+@keyframes fadein { from {bottom: 0; opacity: 0;} to {bottom: 30px; opacity: 1;} }
+@-webkit-keyframes fadeout { from {bottom: 30px; opacity: 1;} to {bottom: 0; opacity: 0;} }
+@keyframes fadeout { from {bottom: 30px; opacity: 1;} to {bottom: 0; opacity: 0;} }

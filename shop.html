@@ -5,200 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shop Collection | GAMACOSMETICOS</title>
     <link rel="stylesheet" href="css/style.css">
-    <style>
-        /* --- Shop Specific Luxury Styles --- */
-        body {
-            font-family: 'Lato', sans-serif;
-            margin: 0;
-            padding: 0;
-            color: #333;
-        }
-
-        .shop-header {
-            text-align: center;
-            padding: 2rem 0 3rem;
-        }
-        .shop-header h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 3rem;
-            margin-bottom: 0.5rem;
-            font-style: italic;
-        }
-        .shop-header p {
-            color: #777;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-size: 0.8rem;
-        }
-
-        /* Minimalist Filter Bar */
-        .filter-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 3rem;
-            border-top: 1px solid #f0f0f0;
-            border-bottom: 1px solid #f0f0f0;
-            padding: 1rem 0;
-        }
-        
-        .search-wrapper {
-            flex: 1;
-            display: flex;
-            align-items: center;
-        }
-        .search-input {
-            width: 100%;
-            max-width: 300px;
-            padding: 0.5rem;
-            border: none;
-            border-bottom: 1px solid #ddd;
-            font-family: 'Lato', sans-serif;
-            font-size: 0.9rem;
-            outline: none;
-            transition: 0.3s;
-        }
-        .search-input:focus {
-            border-bottom-color: #000;
-        }
-
-        .category-select {
-            padding: 0.5rem 1rem;
-            border: 1px solid #ddd;
-            background: transparent;
-            font-family: 'Lato', sans-serif;
-            text-transform: uppercase;
-            font-size: 0.8rem;
-            letter-spacing: 1px;
-            cursor: pointer;
-            outline: none;
-        }
-
-        /* --- Product Grid Layout (Crucial for Display) --- */
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 30px;
-            width: 100%;
-        }
-
-        .product-card {
-            border: 1px solid #f9f9f9;
-            border-radius: 4px;
-            transition: all 0.3s ease;
-            background: #fff;
-            overflow: hidden;
-        }
-
-        .product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-        }
-
-        .product-image {
-            width: 100%;
-            height: 280px;
-            object-fit: cover; /* Ensures images don't stretch */
-            border-bottom: 1px solid #f0f0f0;
-        }
-
-        .product-info {
-            padding: 15px;
-            text-align: center;
-        }
-
-        .product-info h3 {
-            font-size: 1rem;
-            margin: 10px 0 5px;
-            font-weight: 600;
-        }
-
-        .card-actions {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 10px;
-            margin-top: 10px;
-        }
-
-        .qty-selector {
-            display: flex;
-            align-items: center;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-        }
-
-        .qty-btn {
-            background: none;
-            border: none;
-            padding: 5px 10px;
-            cursor: pointer;
-            font-size: 1.2rem;
-        }
-
-        .qty-input {
-            width: 30px;
-            text-align: center;
-            border: none;
-            font-weight: bold;
-        }
-
-        .add-btn {
-            background: #000;
-            color: #fff;
-            border: none;
-            padding: 8px 15px;
-            border-radius: 4px;
-            cursor: pointer;
-            text-transform: uppercase;
-            font-size: 0.7rem;
-            letter-spacing: 1px;
-        }
-
-        .add-btn:hover {
-            background: #333;
-        }
-
-        @media (max-width: 768px) {
-            .filter-container {
-                flex-direction: column;
-                gap: 1.5rem;
-            }
-            .search-input { text-align: center; }
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 </head>
 <body>
-
     <nav>
         <div class="nav-links">
             <a href="shop.html">Shop All</a>
             <a href="shop.html">New Arrivals</a>
         </div>
-        
         <div class="logo"><a href="index.html">GAMACOSMETICOS</a></div>
-        
         <div class="nav-links">
             <a href="about.html">Our World</a>
             <a href="cart.html">Bag (<span id="cart-count">0</span>)</a>
         </div>
-        <div class="cart-icon" style="display:none;">
-            <a href="cart.html">👜 <span id="cart-count-mobile">0</span></a>
-        </div>
     </nav>
 
     <div class="container">
-        <div class="shop-header">
-            <p>The Collection</p>
-            <h1>All Products</h1>
+        <div style="text-align: center; padding: 2rem 0 3rem;">
+            <p style="color: #777; text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem;">The Collection</p>
+            <h1 style="font-family: 'Playfair Display', serif; font-size: 3rem; margin: 0.5rem 0; font-style: italic;">All Products</h1>
         </div>
 
-        <div class="filter-container">
-            <div class="search-wrapper">
-                <input type="text" id="search-input" class="search-input" placeholder="Search for items...">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 3rem; border-top: 1px solid #f0f0f0; border-bottom: 1px solid #f0f0f0; padding: 1rem 0;">
+            <div style="flex: 1; display: flex; align-items: center;">
+                <input type="text" id="search-input" placeholder="Search for items..." style="width: 100%; max-width: 300px; padding: 0.5rem; border: none; border-bottom: 1px solid #ddd; outline: none;">
             </div>
-            
-            <select id="category-select" class="category-select">
+            <select id="category-select" style="padding: 0.5rem 1rem; border: 1px solid #ddd; background: transparent; text-transform: uppercase; font-size: 0.8rem;">
                 <option value="all">View All Categories</option>
                 <option value="Accessories">Accessories</option>
                 <option value="Imitation Jewellery">Jewellery</option>

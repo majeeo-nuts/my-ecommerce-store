@@ -5,33 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GAMACOSMETICOS | Luxury Beauty</title>
     <link rel="stylesheet" href="css/style.css">
-    <style>
-        /* Small inline adjustment to ensure grid looks good */
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            width: 100%;
-        }
-        .product-card {
-            border: 1px solid #f0f0f0;
-            transition: all 0.3s ease;
-        }
-        .product-card:hover {
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 </head>
 <body>
-    
     <nav>
         <div class="nav-links">
             <a href="shop.html">Shop All</a>
             <a href="shop.html">New Arrivals</a>
         </div>
-        
         <div class="logo"><a href="index.html">GAMACOSMETICOS</a></div>
-        
         <div class="nav-links">
             <a href="about.html">Our World</a>
             <a href="cart.html">Bag (<span id="cart-count">0</span>)</a>
@@ -53,31 +35,25 @@
     <div class="container">
         <h2 class="section-title">The Curated Edit</h2>
         <div class="category-grid">
-            
             <a href="shop.html" class="cat-card">
                 <img src="https://images.unsplash.com/photo-1596462502278-27bfdd403348?q=80&w=800&auto=format&fit=crop" alt="Skincare">
                 <div class="cat-text">Skincare</div>
             </a>
-            
             <a href="shop.html" class="cat-card">
                 <img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?q=80&w=800&auto=format&fit=crop" alt="Makeup">
                 <div class="cat-text">Makeup</div>
             </a>
-            
             <a href="shop.html" class="cat-card">
                 <img src="https://images.unsplash.com/photo-1617325247661-675ab4b64ae4?q=80&w=800&auto=format&fit=crop" alt="Accessories">
                 <div class="cat-text">Accessories</div>
             </a>
-
         </div>
     </div>
 
     <div class="container" style="background: #fdfdfd; padding-top: 2rem;">
         <h2 class="section-title">Iconic Essentials</h2>
-        
         <div id="featured-list" class="product-grid">
             </div>
-
         <div style="text-align: center; margin-top: 4rem;">
             <a href="shop.html" class="btn-luxury" style="color: #000; border: 1px solid #000;">View All Products</a>
         </div>
@@ -89,9 +65,7 @@
         </div>
         <div style="flex: 1;">
             <h2 class="section-title" style="text-align: left;">The Art of Self Care</h2>
-            <p style="font-size: 1.1rem; line-height: 1.8; color: #555;">
-                At Gamacosmeticos, we believe beauty is a ritual, not a routine. Born in Mumbai and inspired by global luxury, our collections are crafted to elevate your everyday moments into extraordinary experiences.
-            </p>
+            <p style="font-size: 1.1rem; line-height: 1.8; color: #555;">At Gamacosmeticos, we believe beauty is a ritual, not a routine. Born in Mumbai and inspired by global luxury, our collections are crafted to elevate your everyday moments.</p>
             <br>
             <a href="about.html" style="text-decoration: underline; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px;">Read Our Story</a>
         </div>
@@ -103,6 +77,5 @@
 
     <script src="js/products.js"></script>
     <script src="js/script.js"></script>
-
 </body>
 </html>
