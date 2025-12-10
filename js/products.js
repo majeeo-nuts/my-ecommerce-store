@@ -101,13 +101,10 @@ const products = [
 ];
 
 // --- Automatic Image Path Generator ---
-// This loops through every product and creates the correct path:
-// "assets/images/" + Name_With_Underscores + ".jpg"
 products.forEach(product => {
     // 1. Replace spaces with underscores (e.g. "Hair Scrunchie" -> "Hair_Scrunchie")
     let filename = product.name.replace(/ /g, '_');
     
-    // 2. Build the full path to match your folder structure
-    // Note: We handle the special apostrophe in "Women's Wallet" -> "Women's_Wallet.jpg"
-    product.image = `images/${filename}.jpg`;
+    // 2. Build path based on your folder structure in screenshot: assets/images/
+    product.image = `assets/images/${filename}.jpg`;
 });
