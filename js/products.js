@@ -101,10 +101,13 @@ const products = [
 ];
 
 // --- Automatic Image Path Generator ---
+// This loop runs automatically to add the correct image link to every product.
+// It converts "Hair Scrunchie" -> "assets/images/Hair_Scrunchie.jpg"
+
 products.forEach(product => {
-    // 1. Replace spaces with underscores (e.g. "Hair Scrunchie" -> "Hair_Scrunchie")
+    // 1. Replace all spaces with underscores (e.g., "Winter Gloves" -> "Winter_Gloves")
     let filename = product.name.replace(/ /g, '_');
     
-    // 2. Build path based on your folder structure in screenshot: assets/images/
+    // 2. Build the full path to your assets folder
     product.image = `assets/images/${filename}.jpg`;
 });
